@@ -1,0 +1,35 @@
+body {
+	background: url(background.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	width:100%;
+}
+
+.spslogo {
+		text-align: center;
+		margin-top:20%;
+		font-family: 'Alef', sans-serif;
+		font-size: 40px;
+		letter-spacing: 0.5em;
+		color:white;
+	}
+
+hr {
+		width:10%;
+		margin-left:auto;
+		margin-right:auto;
+
+	}
+
+h2
+	{
+		font-family: 'Alef', sans-serif;
+		color:#acacac;
+	}
+
+h3 {
+		font-family: 'Alef', sans-serif;
+		color:#CCC;
+	}
