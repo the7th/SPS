@@ -54,7 +54,7 @@ $findClassList = mysql_query("SELECT * FROM form ORDER BY ClassName ASC");
                     <li>
                         <a href="index.php">Home | Class List</a>
                     </li>
-                    <li class="active"><a href="school-statistics.php">School Statistics</a></li>
+                    <li><a href="school-statistics.php">School Statistics</a></li>
                     <li><a href="enable-report.php">Enable Report Access</a></li>
                 </ul>
 

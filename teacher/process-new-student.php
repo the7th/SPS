@@ -14,9 +14,8 @@ include("../connect.php");
 	$IC = $_POST['IC'];
 	$FormID = $_POST['FormID'];
 	
-	mysql_query("INSERT INTO student
-	(studentName, IC, FormID) VALUES('$studentName','$IC','$FormID') ") or die(mysql_error());
-	echo "Name inserted is " . $studentName . " with IC of " . $IC;
+	mysql_query("INSERT INTO student(studentName, IC, FormID) VALUES('$studentName','$IC','$FormID') ") or die(mysql_error());
+	echo "Name inserted is " . $studentName . " with IC of " . $IC . "<br>";
 	
 	
 ?>

@@ -59,7 +59,7 @@ $findClassList = mysql_query("SELECT * FROM form ORDER BY ClassName ASC");
     <div class="row">
         <div class="col-sm-2 col-md-2">
             <ul class="nav nav-tabs nav-stacked">
-                <li class="active">
+                <li>
                     <a href="index.php">Home | Class List</a>
                 </li>
                 <li><a href="school-statistics.php">School Statistics</a></li>

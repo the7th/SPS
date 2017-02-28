@@ -15,7 +15,7 @@
         padding-top: 60px;
       }
     </style>
-    <link href="../css/bootstrap-responsive.css" rel="stylesheet">
+<!--    <link href="../css/bootstrap-responsive.css" rel="stylesheet">-->
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -27,34 +27,38 @@
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+  <div class="navbar navbar-inverse navbar-fixed-top navbar-default">
+      <div class="navbar-header"><a class="navbar-brand" href="#">School Performance System</a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="glyphicon glyphicon-bar"></span>
+              <span class="glyphicon glyphicon-bar"></span>
+              <span class="glyphicon glyphicon-bar"></span>
           </button>
-          <a class="brand" href="#">School Performance System</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="active"><a href="index.php">Home</a></li>
-              <li><a href="#user-guide">User Guide</a></li>
-              <li><a href="../logout.php">Log Out</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
       </div>
-    </div>
+      <div class="container">
+          <div class="container">
+              <div class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav">
+                      <li class="active"><a href="#">Home</a>
+                      </li>
+                      <li><a href="#user-guide">User Guide</a>
+                      </li>
+                      <li><a href="../logout.php">Log Out</a>
+                      </li>
+                  </ul>
+              </div>
+              <!--/.navbar-collapse -->
+          </div>
+      </div>
+  </div>
     <?php include("../connect.php");
 $studentID = $_POST["studentID"];
 $findForm = mysql_query("SELECT * FROM student WHERE studentID='$studentID' ");
 $findForm2 = mysql_fetch_array($findForm);
 $form = $findForm2['FormID'];
-$firstform = $_POST["firstform"];
-$secondform = $_POST["secondform"];
-$markah = mysql_query("SELECT * FROM marks WHERE studentID='$studentID' AND FormID='$firstform'");
-$markah2 = mysql_query("SELECT * FROM marks WHERE studentID='$studentID' AND FormID='$secondform'");
+$firstForm = $_POST["firstform"];
+$secondForm = $_POST["secondform"];
+$mark = mysql_query("SELECT * FROM marks WHERE studentID='$studentID' AND FormID='$firstForm'");
+$mark2 = mysql_query("SELECT * FROM marks WHERE studentID='$studentID' AND FormID='$secondForm'");
 
 	//lepas ni kena letak WHERE studentID supaya boleh specify mana student
 
@@ -74,7 +78,7 @@ $markah2 = mysql_query("SELECT * FROM marks WHERE studentID='$studentID' AND For
     <td><strong>TEACHER'S COMMENTS</strong></td>
 
   </tr>
-  <?php while($row2 = mysql_fetch_array($markah2)){?>
+  <?php while($row2 = mysql_fetch_array($mark2)){?>
   <tr>
     <td><?php $subjek = $row2['subjekID']; $carisubjek = mysql_query("SELECT * FROM subjek WHERE subjekID='$subjek'"); $arraysubjek = mysql_fetch_array($carisubjek); echo $arraysubjek['subjekName']; ?></td>
     <td><?php echo $row2['Score']; ?></td>
@@ -96,7 +100,7 @@ $markah2 = mysql_query("SELECT * FROM marks WHERE studentID='$studentID' AND For
     <td><strong>TEACHER'S COMMENTS</strong></td>
 
   </tr>
-  <?php while($row = mysql_fetch_array($markah)){?>
+  <?php while($row = mysql_fetch_array($mark)){?>
   <tr>
     <td><?php $subjek = $row['subjekID']; $carisubjek = mysql_query("SELECT * FROM subjek WHERE subjekID='$subjek'"); $arraysubjek = mysql_fetch_array($carisubjek); echo $arraysubjek['subjekName']; ?></td>
     <td><?php echo $row['Score']; ?></td>

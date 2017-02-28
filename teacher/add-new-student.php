@@ -38,11 +38,14 @@
 <p>To add new student, just fill in the form below and click Add New Student</p>
 <form role="form" id="form1" name="form1" method="post" action="process-new-student.php">
   <div class="form-group">
-   
     <label for="studentName">Student Name</label>
     <input type="text" name="studentName" id="studentName" class="form-control" />
-
   </div>
+
+    <div class="form-group">
+        <label for="parent_name">Parent Name</label>
+        <input type="text" name="parent_name" id="parent_name" class="form-control" />
+    </div>
 
   <div class="form-group">
     <label for="IC">IC</label>

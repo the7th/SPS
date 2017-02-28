@@ -4,7 +4,7 @@
 
 The user can ask the information on screen to be printed for reference purpose. Visualization of each students performance.
 
-Functions to be performed by the system as described below:
+Functions performed by the system as described below:
 
 Parent:
 
@@ -54,5 +54,5 @@ Future Plan:
 1. In Form 4 and Form 5, they will be divided according to their respective stream. In Form 4 and Form 5, they can add or minus the elective subjects.
 
 TO DO:
-- Change all query statement to PDO statement. Futureproofing.
-- Security: never save password in plain text
+- Change all query statement to PDO statements.
+- Security: never save passwords in plain text

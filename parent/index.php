@@ -6,12 +6,12 @@ else
     header("location:../index.php");
 include("../connect.php");
 $parentUsername = $_SESSION['username'];
-$carinamauser = mysql_query("SELECT * FROM users WHERE username='$parentUsername'");
-$namauser = mysql_fetch_array($carinamauser);
-$enable_access = mysql_query("SELECT * FROM sitesettings WHERE sitesettings_id='1'");
+$findUsername = mysql_query("SELECT full_name FROM users WHERE username='$parentUsername'");
+$username = mysql_fetch_array($findUsername);
+$enable_access = mysql_query("SELECT enable_access FROM sitesettings WHERE sitesettings_id='1'");
 $query_enable_access = mysql_fetch_array($enable_access);
 $redirect = $query_enable_access['enable_access'];
-if ($redirect == NULL){
+if ($redirect != "yes"){
 	header("location:../index.php");
 }
 else {
@@ -71,7 +71,7 @@ else {
 
 <div class="container">
     <div class="jumbotron">
-       <h1>Welcome.</h1>
+       <h1>Welcome, <?php echo $username['full_name'] ?></h1>
    </div>
    <h1>This is the mark of your son.</h1>
    <p>In this system you will be able to know:</p>
@@ -83,13 +83,13 @@ else {
 <p>Click on your son's name below to continue</p>
 <table width="500" border="1" align="center" cellpadding="0" cellspacing="0">
 <?php
-$carianak = mysql_query("SELECT * FROM parentforstudent WHERE username='$parentUsername'") or die(mysql_error());
-while($displayanak = mysql_fetch_array($carianak)){
+$findChildren = mysql_query("SELECT * FROM parentforstudent WHERE username='$parentUsername'") or die(mysql_error());
+while($displayChildren = mysql_fetch_array($findChildren)){
     ?>
     <tr>
-        <td><?php $id_anak = $displayanak['studentID']; 
-        $cari_nama_anak = mysql_query("SELECT * FROM student WHERE StudentID='$id_anak'"); 
-        $nama_anak = mysql_fetch_array($cari_nama_anak); ?><a href="markah-anak.php?StudentID=<?php echo $nama_anak['StudentID']; ?>"><?php echo $nama_anak['StudentName']?></a></td>
+        <td><?php $childrenId = $displayChildren['studentID'];
+        $findChildrenName = mysql_query("SELECT * FROM student WHERE StudentID='$childrenId'");
+        $childrenName = mysql_fetch_array($findChildrenName); ?><a href="children-score.php?StudentID=<?php echo $childrenName['StudentID']; ?>"><?php echo $childrenName['StudentName']?></a></td>
     </tr>
 <?php } ?>
 </table>

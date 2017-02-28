@@ -10,7 +10,7 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="index.php">Home</a></li>
-              <li><a href="#user-guide">User Guide</a></li>
+              <li><a href="#">User Guide</a></li>
               <li><a href="teacher-profile.php">Teacher Profile</a></li>
               <li><a href="../logout.php">Log Out</a></li>
             </ul>
