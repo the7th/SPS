@@ -52,10 +52,10 @@ $username = mysql_fetch_array($findUsername);
             <div class="container">
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a>
+                        <li class="active"><a href="../parent">Home</a>
                         </li>
-                        <li><a href="#user-guide">User Guide</a>
-                        </li>
+<!--                        <li><a href="#user-guide">User Guide</a>-->
+<!--                        </li>-->
                         <li><a href="../logout.php">Log Out</a>
                         </li>
                     </ul>
@@ -102,8 +102,8 @@ $username = mysql_fetch_array($findUsername);
             $findSubject = mysql_query("SELECT * FROM subjek WHERE subjekID='$subject'");
             $arraySubject = mysql_fetch_array($findSubject);
             echo $arraySubject['subjekName']; ?></td>
-            <td><?php echo $row['score']; ?></td>
-            <td><?php echo $row['grade'];?></td>
+            <td><?php echo $row['Score']; ?></td>
+            <td><?php echo $row['Grade'];?></td>
             <td><?php echo $row['teacherComment'];?></td>
           </tr>
           <?php } ?>
@@ -138,7 +138,9 @@ $username = mysql_fetch_array($findUsername);
           <div align="center">
             <form name="form1" method="post" action="compare-markah-anak.php">
               <input name="studentID" type="hidden" value="<?php echo $studentID ?>" />
-              <p>Select form from:
+              <h3>Compare Your Child's Score</h3>
+
+                <p>Select form from:
 
                 <label for="firstform"></label>
                 <select name="firstform" id="firstform">

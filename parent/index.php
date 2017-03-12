@@ -58,8 +58,8 @@ else {
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="index.php">Home</a>
                     </li>
-                    <li><a href="#user-guide">User Guide</a>
-                    </li>
+<!--                    <li><a href="#user-guide">User Guide</a>-->
+<!--                    </li>-->
                     <li><a href="../logout.php">Log Out</a>
                     </li>
                 </ul>
@@ -80,8 +80,11 @@ else {
     <li>Your son's score <u>over time</u></li>
     <li>What the teacher's said about your son</li>
 </ol>
-<p>Click on your son's name below to continue</p>
-<table width="500" border="1" align="center" cellpadding="0" cellspacing="0">
+<p>Click on your child's name below to continue</p>
+<table class="table table-hover" align="center" cellpadding="0" cellspacing="0">
+    <thead>
+    <th>List of Child</th>
+    </thead>
 <?php
 $findChildren = mysql_query("SELECT * FROM parentforstudent WHERE username='$parentUsername'") or die(mysql_error());
 while($displayChildren = mysql_fetch_array($findChildren)){

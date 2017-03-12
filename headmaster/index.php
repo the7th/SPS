@@ -38,35 +38,12 @@ $findClassList = mysql_query("SELECT * FROM form ORDER BY ClassName ASC");
                     class="glyphicon glyphicon-bar"></span>
         </button>
     </div>
-    <div class="container">
-        <div class="container">
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.php">Home</a>
-                    </li>
-                    <li><a href="#user-guide">User Guide</a>
-                    </li>
-                    <li><a href="../logout.php">Log Out</a>
-                    </li>
-                </ul>
-            </div>
-            <!--/.navbar-collapse -->
-        </div>
-    </div>
+    <?php include '../nav.php'?>
 </div>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-2 col-md-2">
-            <ul class="nav nav-tabs nav-stacked">
-                <li>
-                    <a href="index.php">Home | Class List</a>
-                </li>
-                <li><a href="school-statistics.php">School Statistics</a></li>
-                <li><a href="enable-report.php">Enable Report Access</a></li>
-            </ul>
-
-        </div>
+        <?php include '../nav-sidebar.php' ?>
         <div class="col-sm-10 col-md-10">
             <p>Below is a list of class available in SMK Danau Kota</p>
             <ul>
@@ -74,7 +51,9 @@ $findClassList = mysql_query("SELECT * FROM form ORDER BY ClassName ASC");
                     <li><a href="kelas.php?FormID=<?php echo $classList['FormID']; ?>"><?php echo $classList['ClassName'];?></a></li>
                 <?php } ?>
             </ul>
-        </div></div></div> <!-- /container -->
+        </div>
+    </div>
+</div> <!-- /container -->
 
 <!-- Le javascript
 ================================================== -->

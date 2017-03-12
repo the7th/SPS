@@ -37,24 +37,22 @@ $namauser = mysql_fetch_array($carinamauser); // need to change to PDO
 
     <div class="container">
       <div class="row">
-        <div class="col-md-2">
-<?php include ('nav-sidebar-teacher.php'); ?>
-        </div>
+        <?php include '../nav-sidebar.php'?>
       <div class="col-md-10">
 		<div class="jumbotron">
         <h2>Welcome <?php echo $namauser['full_name'] ?>.</h2>
         </div>
       <h4>Teacher, this is what you can do</h4>
-      <p>Welcome and greetings.</p>
       <p>In this system you can:</p>
       <ol>
-      	<li><em>Key in</em> marks of your students</li>
+      	<li>Key in marks of your students</li>
         <li>See your students marks by subject</li>
+          <li>In the future, you will be able to mark your student's attendance here</li>
        </ol>
-      <p>Pilih kelas yang ingin anda masukkan data markah.</p>
+      <p>First, please choose a class.</p>
 <table class="table table-striped table-hover">
 <tr>
-  <th>List of class</th>
+  <th>Class</th>
   <th>Class Info</th>
 </tr>
 <?php

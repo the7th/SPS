@@ -17,6 +17,7 @@ $findUserNPass = mysql_query("SELECT * FROM users WHERE username='$username' AND
 $count = mysql_num_rows($findUserNPass);
 $role = mysql_fetch_array($findUserNPass);
 if($count==1){
+    $_SESSION['role'] = $role['role'];
 	if($role['role']=="parent"){
 		$_SESSION['username'] = $username;
 		header("location:parent/");}

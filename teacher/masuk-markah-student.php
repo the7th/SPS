@@ -117,7 +117,9 @@ while($row2 = mysql_fetch_array($result2)){
 
     <label class="control-label" for="teacherComment">Teacher's comment</label>
     <div class="controls"><textarea name="teacherComment" id="teacherComment"></textarea></div></div>
-<div class="controls">
+
+    <br />
+    <div class="controls">
     <input name="Submit" type="submit" class="btn btn-primary" id="Submit" value="Submit Mark" />
 </div>
 </form>

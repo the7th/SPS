@@ -32,7 +32,7 @@
 <?php
 include("../connect.php"); 
 $studentID = intval($_POST["studentID"]);
-$StudentName = $_POST["StudentName"];
+$StudentName = $_POST["studentName"];
 $SubjectID = $_POST["SubjectID"];
 $FormName = $_POST["FormID"];
 $Score = $_POST["Score"];
@@ -40,8 +40,7 @@ $teacherComment = $_POST["teacherComment"];
 $searchFormID = mysql_query("SELECT * FROM form WHERE ClassName='$FormName'");
 $arrayFormID = mysql_fetch_array($searchFormID);
 $form = $arrayFormID['FormID'];
-mysql_query("INSERT INTO marks 
-(studentID, subjekID, Score, FormID, teacherComment) VALUES('$studentID', '$SubjectID', '$Score', '$form', '$teacherComment' ) ") 
+mysql_query("INSERT INTO marks (studentID, subjekID, Score, FormID, teacherComment) VALUES('$studentID', '$SubjectID', '$Score', '$form', '$teacherComment' ) ")
 or die(mysql_error());  
 ?>
 

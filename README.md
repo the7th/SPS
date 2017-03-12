@@ -35,9 +35,11 @@ Admin:
 TODO:
 
 - Replace table name yang dah tukar with the new name
-- Create sitesettings table
+- Create sitesettings table - DONE
 - Redo navigations. Update to Bootstrap 3. DONE.
 - Update all mySQL to PDO or mySQLi statement.
+- Use only one navigation instead of 3 like right now
+- After redo navigation, use Metronic instead of plain Bootstrap
 
 What System Can Do:
 

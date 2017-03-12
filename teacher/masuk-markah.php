@@ -7,7 +7,7 @@ $formID = $_GET["formID"]; // dapatkan markah budak
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Senarai Pelajar dalam Kelas</title>
+    <title>Teacher</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -35,23 +35,20 @@ $formID = $_GET["formID"]; // dapatkan markah budak
 
     <div class="container">
       <div class="row">
-        <div class="col-md-2">
-<?php include ('nav-sidebar-teacher.php'); ?>
-        </div>
+          <?php include ('../nav-sidebar.php'); ?>
       <div class="col-md-10">
-      <h1>Sila Pilih Pelajar</h1>
-      <p>Sila pilih pelajar yang ingin anda masukkan markahnya.</p>
+      <h1>Please choose a student</h1>
+      <p>Whichever you want to.</p>
       <table class="table table-striped">
       <tr>
-      	<th>Senarai pelajar</th>
-        <th>Student Details</th>
+      	<th>Student Names</th>
         <th>Edit Marks</th>
       </tr>
       <?php $findAllStudents = mysql_query("SELECT StudentID, StudentName FROM student WHERE formID='$formID'");
 	  while($allStudents = mysql_fetch_array($findAllStudents)){
 	  ?>
       	<tr>
-        	<td><a href="masuk-markah-student.php?studentID=<?php echo $allStudents['StudentID']; ?>"><?php echo $allStudents['StudentName']?></a></td><td><a href="student-details.php">Student Details</a></td><td><a href="#">Edit Marks</a></td>
+        	<td><a href="masuk-markah-student.php?studentID=<?php echo $allStudents['StudentID']; ?>"><?php echo $allStudents['StudentName']?></a></td><td><a href="#">Edit Marks</a></td>
         </tr>
         <?php } ?>
       </table>
