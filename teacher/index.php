@@ -33,9 +33,10 @@ $namauser = mysql_fetch_array($carinamauser); // need to change to PDO
 
   <body>
 
-  <?php include("nav-teacher.php");?>
+
 
     <div class="container">
+        <?php include("../nav.php");?>
       <div class="row">
         <?php include '../nav-sidebar.php'?>
       <div class="col-md-10">

@@ -29,17 +29,10 @@ $findClassList = mysql_query("SELECT * FROM form ORDER BY ClassName ASC");
 </head>
 
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top navbar-default">
-    <div class="navbar-header"><a class="navbar-brand" href="#">School Performance System</a>
-        <button
-                type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="glyphicon glyphicon-bar"></span>
-            <span class="glyphicon glyphicon-bar"></span>
-            <span
-                    class="glyphicon glyphicon-bar"></span>
-        </button>
-    </div>
-    <?php include '../nav.php'?>
-</div>
+
+<?php
+include ('../nav.php')
+?>
 
 <div class="container-fluid">
     <div class="row">

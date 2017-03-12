@@ -26,7 +26,7 @@
 
   <body>
 
-<?php include("nav-teacher.php"); ?>
+<?php include("../nav.php"); ?>
 
 <div class="container">
 <?php

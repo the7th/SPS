@@ -1,3 +1,4 @@
+<?php include("../session.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -58,13 +59,11 @@ tinymce.init({
 
   <body>
 
-<?php include("nav-teacher.php"); ?>
+<?php include("../nav.php"); ?>
 
     <div class="container">
       <div class="row">
-        <div class="col-md-2">
-<?php include ('nav-sidebar-teacher.php'); ?>
-        </div>
+          <?php include ('../nav-sidebar.php'); ?>
       <div class="col-md-10">
 <?php
 include("../connect.php");

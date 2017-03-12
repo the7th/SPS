@@ -13,11 +13,12 @@ $username = mysql_real_escape_string($username);
 $password = mysql_real_escape_string($password);
 
 //cari username ngan password
-$findUserNPass = mysql_query("SELECT * FROM users WHERE username='$username' AND password='$password'");
+$findUserNPass = mysql_query("SELECT username, role, password FROM users WHERE username='$username' AND password='$password'");
 $count = mysql_num_rows($findUserNPass);
 $role = mysql_fetch_array($findUserNPass);
 if($count==1){
     $_SESSION['role'] = $role['role'];
+
 	if($role['role']=="parent"){
 		$_SESSION['username'] = $username;
 		header("location:parent/");}

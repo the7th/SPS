@@ -24,13 +24,11 @@
 
   <body>
 
-<?php include("nav-teacher.php"); ?>
+<?php include("../nav.php"); ?>
 
     <div class="container">
       <div class="row">
-        <div class="col-md-2">
-<?php include ('nav-sidebar-teacher.php'); ?>
-        </div>
+        <?php include '../nav-sidebar.php'?>
       <div class="col-md-10">
 <h2 align="center">Add New Student</h2>
 <?php include("../connect.php") ?>
