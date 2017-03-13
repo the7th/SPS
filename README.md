@@ -34,12 +34,16 @@ Admin:
 
 TODO:
 
-- Replace table name yang dah tukar with the new name
-- Create sitesettings table - DONE
-- Redo navigations. Update to Bootstrap 3. DONE.
-- Update all mySQL to PDO or mySQLi statement.
-- Use only one navigation instead of 3 like right now
+- Teacher: Can add new parent
+- Update all mySQL to PDO or mySQLi statement
 - After redo navigation, use Metronic instead of plain Bootstrap
+- List of students in teacher's and headmaster's panel (divided by class)
+- Automatically generate grade according to the marks given
+- Headmaster: Bug in enable report access page - fixed
+- Headmaster: Add new class
+- Chart for performance
+
+
 
 What System Can Do:
 

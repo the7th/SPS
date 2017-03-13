@@ -12,9 +12,7 @@ $enable_access = mysql_query("SELECT enable_access FROM sitesettings WHERE sites
 $query_enable_access = mysql_fetch_array($enable_access);
 $redirect = $query_enable_access['enable_access'];
 if ($redirect != "yes"){
-	header("location:../index.php");
-}
-else {
+	header("location:../not-opened.php");
 }
 ?>
 <!DOCTYPE html>
