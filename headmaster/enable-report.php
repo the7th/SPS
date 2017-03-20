@@ -25,10 +25,10 @@ $username = $_SESSION['username'];
 </head>
 
 <body>
-<?php include ('../nav.php')?>
+<?php include('../nav.php') ?>
 <div class="container-fluid">
     <div class="row-fluid">
-        <?php include ('../nav-sidebar.php')?>
+        <?php include('../nav-sidebar.php') ?>
         <div class="col-sm-10 col-md-10">
             <div class="alert">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>

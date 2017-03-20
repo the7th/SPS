@@ -26,7 +26,7 @@
 
   <body>
 
-<?php include("../nav.php"); ?>
+<?php include("../nav/nav.php"); ?>
 
 <div class="container">
 <?php
@@ -44,13 +44,13 @@ mysql_query("INSERT INTO marks (studentID, subjekID, Score, FormID, teacherComme
 or die(mysql_error());  
 ?>
 
-<div class="alert alert-success"><p><strong>Information Inserted.</strong> Below is the data that have been inserted into the system.</p></div>
+<div class="alert alert-success"><p><strong>Information inserted.</strong> Below is the data that have been inserted into the system.</p></div>
 <p>Please check the information below. If it's incorrect, please <a href="edit-marks.php?studentID=<?php echo $studentID ?>&SubjectID=<?php echo $SubjectID?>&FormID=<?php echo $form?>">click here</a> to edit it.</p>
 <p>Student Name: <?php echo $StudentName ?></p>
 <p>Subjek ID: <?php echo $SubjectID ?></p>
 <p>Markah: <?php echo $Score ?></p>
 <p>Form Name: <?php echo $FormName ?></p>
-<p>Komen cikgu: <?php echo $teacherComment ?></p>
+<p>Teacher's comment: <?php echo $teacherComment ?></p>
 </div>
 </body>
 </html>

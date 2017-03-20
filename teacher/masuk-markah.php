@@ -31,11 +31,11 @@ $formID = $_GET["formID"]; // dapatkan markah budak
 
 <body>
 
-<?php include("../nav.php"); ?>
+<?php include("../nav/nav.php"); ?>
 
     <div class="container">
       <div class="row">
-          <?php include ('../nav-sidebar.php'); ?>
+          <?php include('../nav/nav-sidebar.php'); ?>
       <div class="col-md-10">
       <h1>Please choose a student</h1>
       <p>Whichever you want to.</p>

@@ -30,12 +30,12 @@ $findClassList = mysql_query("SELECT * FROM form ORDER BY ClassName ASC");
 
 <body>
 
-<?php include ('../nav.php')?>
+<?php include('../nav.php') ?>
 
         <div class="container-fluid">
         <div class="row-fluid">
 
-            <?php include ('../nav-sidebar.php')?>
+            <?php include('../nav-sidebar.php') ?>
             <div class="col-sm-10 col-md-10">
       <p>Average for school student for this current examination result is:</p>
 <?php

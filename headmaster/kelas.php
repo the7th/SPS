@@ -39,12 +39,12 @@ function goBack()
 <body>
 
 <?php
-include ('../nav.php')
+include('../nav.php')
 ?>
 
 <div class="container-fluid">
         <div class="row">
-        <?php include ('../nav-sidebar.php')?>
+        <?php include('../nav-sidebar.php') ?>
             <div class="col-sm-10 col-md-10">
                 <p>Senarai nama pelajar untuk kelas: <strong><?php echo $formName['ClassName']; ?></strong></p>
 <ol>

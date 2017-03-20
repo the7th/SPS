@@ -31,7 +31,7 @@ $findClassList = mysql_query("SELECT * FROM form ORDER BY ClassName ASC");
 <body>
 
 <?php
-include ('../nav.php')
+include('../nav.php')
 ?>
 
 <div class="container-fluid">

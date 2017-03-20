@@ -36,9 +36,9 @@ $namauser = mysql_fetch_array($carinamauser); // need to change to PDO
 
 
     <div class="container">
-        <?php include("../nav.php");?>
+        <?php include("../nav/nav.php");?>
       <div class="row">
-        <?php include '../nav-sidebar.php'?>
+        <?php include '../nav/nav-sidebar.php' ?>
       <div class="col-md-10">
 		<div class="jumbotron">
         <h2>Welcome <?php echo $namauser['full_name'] ?>.</h2>

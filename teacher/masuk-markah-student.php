@@ -59,11 +59,11 @@ tinymce.init({
 
   <body>
 
-<?php include("../nav.php"); ?>
+<?php include("../nav/nav.php"); ?>
 
     <div class="container">
       <div class="row">
-          <?php include ('../nav-sidebar.php'); ?>
+          <?php include('../nav/nav-sidebar.php'); ?>
       <div class="col-md-10">
 <?php
 include("../connect.php");
