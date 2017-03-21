@@ -32,19 +32,6 @@ Admin:
 2. Add/edit/delete new class into the system (can undo)
 3. Add/edit/delete new stream (can undo)
 
-TODO:
-
-- Teacher: Can add new parent
-- Update all mySQL to PDO or mySQLi statement
-- After redo navigation, use Metronic instead of plain Bootstrap
-- List of students in teacher's and headmaster's panel (divided by class)
-- Automatically generate grade according to the marks given
-- Headmaster: Bug in enable report access page - fixed
-- Headmaster: Add new class
-- Chart for performance
-
-
-
 What System Can Do:
 
 - Direct to email (if there is any notification, an e-mail will be sent to the parents)
@@ -55,6 +42,7 @@ What System Can Do:
 - Parents digitally sign the document
 - Can be printed
 
+
 Future Plan:
 
 1. In Form 4 and Form 5, they will be divided according to their respective stream. In Form 4 and Form 5, they can add or minus the elective subjects.
@@ -62,3 +50,11 @@ Future Plan:
 TO DO:
 - Change all query statement to PDO statements.
 - Security: never save passwords in plain text
+
+
+I need to break things down into its respective place so that I can put them in a proper place. 
+
+Where to add/edit/delete subject?
+Where to add/edit/delete student?
+Where to add/edit/delete class?
+Who can add student attendance?

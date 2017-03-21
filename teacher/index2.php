@@ -1,3 +1,11 @@
+<?php
+include("../session.php");
+include("../connect.php");
+$username = $_SESSION['username'];
+
+$carinamauser = mysql_query("SELECT full_name FROM users WHERE username='$username'");
+$namauser = mysql_fetch_array($carinamauser); // need to change to PDO
+?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -56,45 +64,7 @@
                 <!-- BEGIN RESPONSIVE MENU TOGGLER -->
                 <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
                 <!-- END RESPONSIVE MENU TOGGLER -->
-                <!-- BEGIN PAGE ACTIONS -->
-                <!-- DOC: Remove "hide" class to enable the page header actions -->
-                <div class="page-actions">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-circle btn-outline red dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-plus"></i>&nbsp;
-                            <span class="hidden-sm hidden-xs">New&nbsp;</span>&nbsp;
-                            <i class="fa fa-angle-down"></i>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="javascript:;">
-                                    <i class="icon-docs"></i> New Post </a>
-                            </li>
-                            <li>
-                                <a href="javascript:;">
-                                    <i class="icon-tag"></i> New Comment </a>
-                            </li>
-                            <li>
-                                <a href="javascript:;">
-                                    <i class="icon-share"></i> Share </a>
-                            </li>
-                            <li class="divider"> </li>
-                            <li>
-                                <a href="javascript:;">
-                                    <i class="icon-flag"></i> Comments
-                                    <span class="badge badge-success">4</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:;">
-                                    <i class="icon-users"></i> Feedbacks
-                                    <span class="badge badge-danger">2</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- END PAGE ACTIONS -->
+
                 <!-- BEGIN PAGE TOP -->
                 <div class="page-top">
 
@@ -117,8 +87,8 @@
                 <div class="page-content">
                     <!-- BEGIN PAGE HEADER-->
 
-                    <h1 class="page-title"> Welcome
-                        <small>Learn about your students here</small>
+                    <h1 class="page-title"> Welcome, <?php echo $namauser['full_name'] ?>
+                        <small>Learn about your students here.</small>
                     </h1>
 
                     <!-- END PAGE HEADER-->
@@ -185,7 +155,7 @@
                                         <small>HIGHEST SCORE</small>
                                     </div>
                                     <div class="icon">
-                                        <i class="icon-basket"></i>
+                                        <i class="icon-badge"></i>
                                     </div>
                                 </div>
                                 <div class="progress-info">
@@ -211,7 +181,7 @@
                                         <small>LOWEST SCORE</small>
                                     </div>
                                     <div class="icon">
-                                        <i class="icon-user"></i>
+                                        <i class="icon-dislike"></i>
                                     </div>
                                 </div>
                                 <div class="progress-info">
