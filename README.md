@@ -65,21 +65,23 @@ Who can add student attendance?
 
 2. Please create a file 'connect.php' and insert the following:
 
-    <?php
+```php
+<?php
     
-    $host = 'localhost';
-    $db   = 'YOURDBNAME';
-    $user = 'YOURDBUSERNAME';
-    $pass = 'YOURDBPASSWORD';
-    $charset = 'utf8';
-    
-    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-    $opt = [
-        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_EMULATE_PREPARES   => false,
-    ];
-    $pdo = new PDO($dsn, $user, $pass, $opt);
+$host = 'localhost';
+$db   = 'YOURDBNAME';
+$user = 'YOURDBUSERNAME';
+$pass = 'YOURDBPASSWORD';
+$charset = 'utf8';
+
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$opt = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
+];
+$pdo = new PDO($dsn, $user, $pass, $opt);
+```
 
 3. Import 'sps.sql' into your database.
 
