@@ -63,7 +63,7 @@ Who can add student attendance?
 
 1. Please download the zip file or clone this repo
 
-2. Please create a file 'connect.php' and insert the following:
+2. Please create a file 'connect.php' (put it at the root of this project file) and insert the following:
 
 ```php
 <?php
