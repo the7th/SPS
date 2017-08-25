@@ -58,3 +58,41 @@ Where to add/edit/delete subject?
 Where to add/edit/delete student?
 Where to add/edit/delete class?
 Who can add student attendance?
+
+## INSTALLATION
+
+1. Please download the zip file or clone this repo
+
+2. Please create a file 'connect.php' and insert the following:
+
+    <?php
+    
+    $host = 'localhost';
+    $db   = 'YOURDBNAME';
+    $user = 'YOURDBUSERNAME';
+    $pass = 'YOURDBPASSWORD';
+    $charset = 'utf8';
+    
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+    $opt = [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES   => false,
+    ];
+    $pdo = new PDO($dsn, $user, $pass, $opt);
+
+3. Import 'sps.sql' into your database.
+
+You will get 3 usernames which you can use to access each.
+
+Headmaster:
+Username: headmaster
+Password: headmaster
+
+Teacher:
+Username: teacher
+Password: teacher
+
+Parent:
+Username: parent
+Password: parent
