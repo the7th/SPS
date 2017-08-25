@@ -1,7 +1,16 @@
 <?php
-include("../session.php");
+session_start();
+if(isset($_SESSION['username']));
+else
+    header("location:../login.php");
 include("../connect.php");
-$formID = $_GET["formID"];
+$headmaster = $_SESSION['username'];
+$findUsername = mysql_query("SELECT * FROM users WHERE username='$headmaster'");
+$username = mysql_fetch_array($findUsername);
+$FormID = $_GET["FormID"];
+$findStudent = mysql_query("SELECT StudentID, StudentName FROM student WHERE FormID='$FormID'");
+$findForm = mysql_query("SELECT * FROM form WHERE FormID='$FormID'");
+$formName = mysql_fetch_array($findForm);
 ?>
 
 <!DOCTYPE html>
@@ -84,39 +93,43 @@ $formID = $_GET["formID"];
         <div class="page-content">
             <!-- BEGIN PAGE HEADER-->
 
-
+            <h1 class="page-title"> Choose,
+                <small>your student.</small>
+            </h1>
 
             <!-- END PAGE HEADER-->
 
+
             <div class="row">
-                <div class="col-lg-6 col-xs-12 col-sm-12">
+                <div class="col-lg-12 col-xs-12 col-sm-12">
                     <div class="portlet light ">
                         <div class="portlet-title">
                             <div class="caption">
-                                <span class="caption-subject bold uppercase font-dark">Please choose a student</span>
+                                <span class="caption-subject bold uppercase font-dark">Students in this class</span>
                             </div>
 
                         </div>
                         <div class="portlet-body">
-                            <table class="table table-striped">
-                                <tr>
-                                    <th>Student Names</th>
-                                    <th>Edit Marks</th>
-                                </tr>
-                                <?php $findAllStudents = mysql_query("SELECT StudentID, StudentName FROM student WHERE formID='$formID'");
-                                while($allStudents = mysql_fetch_array($findAllStudents)){
-                                    ?>
-                                    <tr>
-                                        <td><a href="score-student-insert.php?studentID=<?php echo $allStudents['StudentID']; ?>"><?php echo $allStudents['StudentName']?></a></td><td><a href="#">Edit Marks</a></td>
-                                    </tr>
+
+                            <script>
+                                function goBack()
+                                {
+                                    window.history.back()
+                                }
+                            </script>
+
+                            <p>Senarai nama pelajar untuk kelas: <strong><?php echo $formName['ClassName']; ?></strong></p>
+                            <ol>
+                                <?php while($senaraipelajar = mysql_fetch_array($findStudent)){ ?>
+                                    <li><a href="pelajar.php?studentID=<?php echo $senaraipelajar['StudentID']; ?>&amp;FormID=<?php echo $FormID?>"><?php echo $senaraipelajar['StudentName'];?></a></li>
                                 <?php } ?>
-                            </table>
+                            </ol>
+                            <input class="btn" type="button" value="Back" onclick="goBack()">
+
                         </div>
                     </div>
                 </div>
-
             </div>
-
 
 
 

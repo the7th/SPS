@@ -1,9 +1,15 @@
 <?php
-include("../session.php");
+session_start();
+if(isset($_SESSION['username']));
+else
+    header("location:../login.php");
 include("../connect.php");
-$formID = $_GET["formID"];
-?>
+$headmaster = $_SESSION['username'];
+$findUsername = mysql_query("SELECT * FROM users WHERE username='$headmaster'");
+$username = mysql_fetch_array($findUsername);
 
+$findClassList = mysql_query("SELECT * FROM form ORDER BY ClassName ASC");
+?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -84,39 +90,170 @@ $formID = $_GET["formID"];
         <div class="page-content">
             <!-- BEGIN PAGE HEADER-->
 
-
+            <h1 class="page-title"> Welcome,
+                <small>Here's your school.</small>
+            </h1>
 
             <!-- END PAGE HEADER-->
-
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="dashboard-stat2 ">
+                        <div class="display">
+                            <div class="number">
+                                <h3 class="font-green-sharp">
+                                    <span data-counter="counterup" data-value="50">0</span>
+                                </h3>
+                                <small>TOTAL STUDENTS</small>
+                            </div>
+                            <div class="icon">
+                                <i class="icon-pie-chart"></i>
+                            </div>
+                        </div>
+                        <div class="progress-info">
+                            <div class="progress">
+                                        <span style="width: 76%;" class="progress-bar progress-bar-success green-sharp">
+                                            <span class="sr-only">76% progress</span>
+                                        </span>
+                            </div>
+                            <div class="status">
+                                <div class="status-title"> progress </div>
+                                <div class="status-number"> 76% </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="dashboard-stat2 ">
+                        <div class="display">
+                            <div class="number">
+                                <h3 class="font-red-haze">
+                                    <span data-counter="counterup" data-value="65.5">0</span>
+                                </h3>
+                                <small>AVERAGE SCORE</small>
+                            </div>
+                            <div class="icon">
+                                <i class="icon-like"></i>
+                            </div>
+                        </div>
+                        <div class="progress-info">
+                            <div class="progress">
+                                        <span style="width: 85%;" class="progress-bar progress-bar-success red-haze">
+                                            <span class="sr-only">85% change</span>
+                                        </span>
+                            </div>
+                            <div class="status">
+                                <div class="status-title"> change </div>
+                                <div class="status-number"> 85% </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="dashboard-stat2 ">
+                        <div class="display">
+                            <div class="number">
+                                <h3 class="font-blue-sharp">
+                                    <span data-counter="counterup" data-value="93"></span>
+                                </h3>
+                                <small>HIGHEST SCORE</small>
+                            </div>
+                            <div class="icon">
+                                <i class="icon-badge"></i>
+                            </div>
+                        </div>
+                        <div class="progress-info">
+                            <div class="progress">
+                                        <span style="width: 45%;" class="progress-bar progress-bar-success blue-sharp">
+                                            <span class="sr-only">45% grow</span>
+                                        </span>
+                            </div>
+                            <div class="status">
+                                <div class="status-title"> grow </div>
+                                <div class="status-number"> 45% </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="dashboard-stat2 ">
+                        <div class="display">
+                            <div class="number">
+                                <h3 class="font-purple-soft">
+                                    <span data-counter="counterup" data-value="2"></span>
+                                </h3>
+                                <small>LOWEST SCORE</small>
+                            </div>
+                            <div class="icon">
+                                <i class="icon-dislike"></i>
+                            </div>
+                        </div>
+                        <div class="progress-info">
+                            <div class="progress">
+                                        <span style="width: 57%;" class="progress-bar progress-bar-success purple-soft">
+                                            <span class="sr-only">56% change</span>
+                                        </span>
+                            </div>
+                            <div class="status">
+                                <div class="status-title"> change </div>
+                                <div class="status-number"> 57% </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-6 col-xs-12 col-sm-12">
                     <div class="portlet light ">
                         <div class="portlet-title">
                             <div class="caption">
-                                <span class="caption-subject bold uppercase font-dark">Please choose a student</span>
+                                <span class="caption-subject bold uppercase font-dark">Scores Over Time</span>
+                                <span class="caption-helper">Average scores student get year by year</span>
                             </div>
 
                         </div>
                         <div class="portlet-body">
-                            <table class="table table-striped">
-                                <tr>
-                                    <th>Student Names</th>
-                                    <th>Edit Marks</th>
-                                </tr>
-                                <?php $findAllStudents = mysql_query("SELECT StudentID, StudentName FROM student WHERE formID='$formID'");
-                                while($allStudents = mysql_fetch_array($findAllStudents)){
-                                    ?>
-                                    <tr>
-                                        <td><a href="score-student-insert.php?studentID=<?php echo $allStudents['StudentID']; ?>"><?php echo $allStudents['StudentName']?></a></td><td><a href="#">Edit Marks</a></td>
-                                    </tr>
-                                <?php } ?>
-                            </table>
+                            <p>Line chart showing scores of student every year</p>
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-6 col-xs-12 col-sm-12">
+                    <div class="portlet light ">
+                        <div class="portlet-title">
+                            <div class="caption ">
+                                <span class="caption-subject font-dark bold uppercase">Subjects Performance</span>
+                                <span class="caption-helper">Subjects performance graph</span>
+                            </div>
 
+                        </div>
+                        <div class="portlet-body">
+
+                            <p>Histogram of subject. Lowest to highest.</p>
+
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="row">
+                <div class="col-lg-12 col-xs-12 col-sm-12">
+                    <div class="portlet light ">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <span class="caption-subject bold uppercase font-dark">Class</span>
+                                <span class="caption-helper">List of class</span>
+                            </div>
 
+                        </div>
+                        <div class="portlet-body">
+
+                            <ul>
+                                <?php while($classList = mysql_fetch_array($findClassList)){ ?>
+                                    <li><a href="kelas.php?FormID=<?php echo $classList['FormID']; ?>"><?php echo $classList['ClassName'];?></a></li>
+                                <?php } ?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
 
