@@ -15,7 +15,7 @@
         ?>
         <ul class="nav nav-tabs nav-stacked">
             <li>
-                <a href="../index.php">Home</a>
+                <a href="index.php">Home</a>
             </li>
             <li><a href="add-new-student.php">Add New Student</a></li>
         </ul>

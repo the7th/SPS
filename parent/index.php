@@ -1,15 +1,14 @@
 <?php
 session_start();
-error_reporting(E_ALL ^ E_DEPRECATED);
 if(isset($_SESSION['username']));
 else
     header("location:../index.php");
 include("../connect.php");
 $parentUsername = $_SESSION['username'];
-$findUsername = mysql_query("SELECT full_name FROM users WHERE username='$parentUsername'");
-$username = mysql_fetch_array($findUsername);
-$enable_access = mysql_query("SELECT enable_access FROM sitesettings WHERE sitesettings_id='1'");
-$query_enable_access = mysql_fetch_array($enable_access);
+$findUsername = $pdo->query("SELECT full_name FROM users WHERE username='$parentUsername'");
+$username = $findUsername->fetch();
+$enable_access = $pdo->query("SELECT enable_access FROM sitesettings WHERE sitesettings_id='1'");
+$query_enable_access = $enable_access->fetch();
 $redirect = $query_enable_access['enable_access'];
 if ($redirect != "yes"){
 	header("location:../not-opened.php");
