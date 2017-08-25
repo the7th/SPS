@@ -1,4 +1,4 @@
-# [Student Performance System](https://github.com/the7th/SPS)
+# Student Performance System
 
 **Student Performance System** is a system to view student's performance. It can track students from Form 1 to Form 5.
 
