@@ -37,17 +37,17 @@
 <form role="form" id="form1" name="form1" method="post" action="process-new-student.php">
   <div class="form-group">
     <label for="studentName">Student Name</label>
-    <input type="text" name="studentName" id="studentName" class="form-control" />
+    <input name="studentName" id="studentName" class="form-control" />
   </div>
 
     <div class="form-group">
         <label for="parent_name">Parent Name</label>
-        <input type="text" name="parent_name" id="parent_name" class="form-control" />
+        <input name="parent_name" id="parent_name" class="form-control" />
     </div>
 
   <div class="form-group">
     <label for="IC">IC</label>
-    <input type="text" name="IC" id="IC" class="form-control" />
+    <input name="IC" id="IC" class="form-control" />
   </div>
 
   <div class="form-group">
@@ -55,8 +55,8 @@
     <select name="FormID" id="FormID" class="form-control" >
     <?php
 
-$result = mysql_query("SELECT FormID, ClassName FROM form") or die(mysql_error());
-while($row = mysql_fetch_array($result)){
+$result = $pdo->query("SELECT FormID, ClassName FROM form") or die(mysql_error());
+while($row = $result->fetch()){
       echo "<option value=" .$row['FormID'].">" . $row['ClassName']. "</option>" ;
 }
 	?>

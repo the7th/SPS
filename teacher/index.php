@@ -3,8 +3,8 @@ include("../session.php");
 include("../connect.php");
 $username = $_SESSION['username'];
 
-$carinamauser = mysql_query("SELECT full_name FROM users WHERE username='$username'");
-$namauser = mysql_fetch_array($carinamauser); // need to change to PDO
+$carinamauser = $pdo->query("SELECT full_name FROM users WHERE username='$username'");
+$namauser = $carinamauser->fetch(); // need to change to PDO
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,8 +57,8 @@ $namauser = mysql_fetch_array($carinamauser); // need to change to PDO
   <th>Class Info</th>
 </tr>
 <?php
-$findClass = mysql_query("SELECT FormID, ClassName FROM form ORDER BY className") or die(mysql_error());
-while($displayClass = mysql_fetch_array($findClass)){
+$findClass = $pdo->query("SELECT FormID, ClassName FROM form ORDER BY className") or die(mysql_error());
+while($displayClass = $findClass->fetch()){
 	?>
 	<tr>
 		<td><a href="masuk-markah.php?formID=<?php echo $displayClass['FormID']; ?>"><?php echo $displayClass['ClassName']?></a></td>

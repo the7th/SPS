@@ -24,3 +24,6 @@ build/
 gradlew
 gradlew.bat
 gradle/
+
+#project specific files
+connect.php
