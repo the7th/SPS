@@ -12,7 +12,7 @@ if (!isset($_POST["enable_access"])):
     $enable_access = "no";
 endif;
 
-mysql_query("UPDATE sitesettings SET enable_access='$enable_access' WHERE sitesettings_id='1'") or die(mysql_error());
+$pdo->query("UPDATE sitesettings SET enable_access='$enable_access' WHERE sitesettings_id='1'") or die(mysql_error());
 ?>
 <!doctype html>
 <html>

@@ -21,14 +21,15 @@ $username = $_SESSION['username'];
             padding-top: 60px;
         }
     </style>
-    <link href="../css/bootstrap-responsive.css" rel="stylesheet"><title>Enable Report Access | Headmaster</title>
+    <link href="../css/bootstrap-responsive.css" rel="stylesheet">
+    <title>Enable Report Access | Headmaster</title>
 </head>
 
 <body>
-<?php include('../nav.php') ?>
+<?php include('../nav/nav.php') ?>
 <div class="container-fluid">
     <div class="row-fluid">
-        <?php include('../nav-sidebar.php') ?>
+        <?php include('../nav/nav-sidebar.php') ?>
         <div class="col-sm-10 col-md-10">
             <div class="alert">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>

@@ -5,10 +5,10 @@ else
     header("location:../login.php");
 include("../connect.php");
 $headmaster = $_SESSION['username'];
-$findUsername = mysql_query("SELECT * FROM users WHERE username='$headmaster'");
-$username = mysql_fetch_array($findUsername);
+$findUsername = $pdo->query("SELECT * FROM users WHERE username='$headmaster'");
+$username = $findUsername->fetch();
 
-$findClassList = mysql_query("SELECT * FROM form ORDER BY ClassName ASC");
+$findClassList = $pdo->query("SELECT * FROM form ORDER BY ClassName ASC");
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -246,7 +246,7 @@ $findClassList = mysql_query("SELECT * FROM form ORDER BY ClassName ASC");
                         <div class="portlet-body">
 
                             <ul>
-                                <?php while($classList = mysql_fetch_array($findClassList)){ ?>
+                                <?php while($classList = $findClassList->fetch()){ ?>
                                     <li><a href="kelas.php?FormID=<?php echo $classList['FormID']; ?>"><?php echo $classList['ClassName'];?></a></li>
                                 <?php } ?>
                             </ul>

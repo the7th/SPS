@@ -3,8 +3,8 @@ include("../session.php");
 include("../connect.php");
 $username = $_SESSION['username'];
 
-$carinamauser = mysql_query("SELECT full_name FROM users WHERE username='$username'");
-$namauser = mysql_fetch_array($carinamauser); // need to change to PDO
+$carinamauser = $pdo->query("SELECT full_name FROM users WHERE username='$username'");
+$namauser = $carinamauser->fetch(); // need to change to PDO
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->

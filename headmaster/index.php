@@ -5,10 +5,10 @@ else
     header("location:../login.php");
 include("../connect.php");
 $headmaster = $_SESSION['username'];
-$findUsername = mysql_query("SELECT * FROM users WHERE username='$headmaster'");
-$username = mysql_fetch_array($findUsername);
+$findUsername = $pdo->query("SELECT * FROM users WHERE username='$headmaster'");
+$username = $findUsername->fetch();
 
-$findClassList = mysql_query("SELECT * FROM form ORDER BY ClassName ASC");
+$findClassList = $pdo->query("SELECT * FROM form ORDER BY ClassName ASC");
 ?>
 <!doctype html>
 <html>

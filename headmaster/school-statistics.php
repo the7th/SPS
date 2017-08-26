@@ -5,10 +5,10 @@ else
 header("location:../login.php");
 include("../connect.php");
 $headmaster = $_SESSION['username'];
-$findUsername = mysql_query("SELECT * FROM users WHERE username='$headmaster'");
-$username = mysql_fetch_array($findUsername);
+$findUsername = $pdo->query("SELECT * FROM users WHERE username='$headmaster'");
+$username = $findUsername->fetch();
 
-$findClassList = mysql_query("SELECT * FROM form ORDER BY ClassName ASC");
+$findClassList = $pdo->query("SELECT * FROM form ORDER BY ClassName ASC");
 ?>
 <!doctype html>
 <html>
@@ -30,17 +30,17 @@ $findClassList = mysql_query("SELECT * FROM form ORDER BY ClassName ASC");
 
 <body>
 
-<?php include('../nav.php') ?>
+<?php include('../nav/nav.php') ?>
 
         <div class="container-fluid">
         <div class="row-fluid">
 
-            <?php include('../nav-sidebar.php') ?>
+            <?php include('../nav/nav-sidebar.php') ?>
             <div class="col-sm-10 col-md-10">
       <p>Average for school student for this current examination result is:</p>
 <?php
-$avg = mysql_query("SELECT AVG(Score) FROM marks");
-$avgResult = mysql_fetch_array($avg); ?>
+$avg = $pdo->query("SELECT AVG(Score) FROM marks");
+$avgResult = $avg->fetch(); ?>
 <h1 align="center"><?php echo $avgResult['AVG(Score)'];?>%</h1>
 <p>Number of students who got each grade.</p>
 <table class="table table-condensed table-bordered">
@@ -49,8 +49,8 @@ $avgResult = mysql_fetch_array($avg); ?>
 <th>Number of students</th>
 </tr>
 <?php
-$avgGrade = mysql_query("SELECT Grade, COUNT(Grade) FROM marks GROUP BY Grade");
-while ($avgGradeResult = mysql_fetch_array($avgGrade)){ ?>
+$avgGrade = $pdo->query("SELECT Grade, COUNT(Grade) FROM marks GROUP BY Grade");
+while ($avgGradeResult = $avgGrade->fetch()){ ?>
 <tr>
 <td><?php
 echo $avgGradeResult['Grade']?></td><td><?php echo $avgGradeResult['COUNT(Grade)']; ?></td>
@@ -61,14 +61,14 @@ echo $avgGradeResult['Grade']?></td><td><?php echo $avgGradeResult['COUNT(Grade)
 </table>
 <p>Number of teacher registered in the system</p>
 <h3><?php 
-$search_teacher_registered = mysql_query("SELECT role, COUNT(role) FROM users WHERE role='teacher'");
-$teacher_registered = mysql_fetch_array($search_teacher_registered);
+$search_teacher_registered = $pdo->query("SELECT role, COUNT(role) FROM users WHERE role='teacher'");
+$teacher_registered = $search_teacher_registered->fetch();
 echo $teacher_registered['COUNT(role)'];
 ?></h3>
 <p>Number of parents registered in the system</p>
 <h3><?php 
-$search_parent_registered = mysql_query("SELECT role, COUNT(role) FROM users WHERE role='parent'");
-$parent_registered = mysql_fetch_array($search_parent_registered);
+$search_parent_registered = $pdo->query("SELECT role, COUNT(role) FROM users WHERE role='parent'");
+$parent_registered = $search_parent_registered->fetch();
 echo $parent_registered['COUNT(role)'];
 ?></h3>
 </div></div></div>

@@ -5,14 +5,14 @@ else
 header("location:../login.php");
 include("../connect.php");
 $headmaster = $_SESSION['username'];
-$findUsername = mysql_query("SELECT * FROM users WHERE username='$headmaster'");
-$username = mysql_fetch_array($findUsername);
+$findUsername = $pdo->query("SELECT * FROM users WHERE username='$headmaster'");
+$username = $findUsername->fetch();
 $studentID = $_GET["studentID"];
 $FormID = $_GET["FormID"];
 
-$findStudentDetail = mysql_query("SELECT * FROM marks WHERE studentID='$studentID' AND FormID='$FormID'");
-$findStudentName = mysql_query("SELECT * FROM student WHERE studentID='$studentID'");
-$studentName = mysql_fetch_array($findStudentName);
+$findStudentDetail = $pdo->query("SELECT * FROM marks WHERE studentID='$studentID' AND FormID='$FormID'");
+$findStudentName = $pdo->query("SELECT * FROM student WHERE studentID='$studentID'");
+$studentName = $findStudentName->fetch();
 ?>
 <!doctype html>
 <html>
@@ -77,7 +77,7 @@ function goBack()
                     <th>Komen</th>
                 </tr>
                 <?php
-                    while($studentDetail = mysql_fetch_array($findStudentDetail)) { ?>
+                    while($studentDetail = $findStudentDetail->fetch()) { ?>
                 <tr>
                     <td><?php echo $studentDetail['subjekID']; ?></td>
                     <td><?php echo $studentDetail['Score']; ?></td>
