@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
+
     <?php include("../connect.php");
-	//lepas ni kena letak WHERE studentID supaya boleh specify mana student
-$studentID = $_GET["studentID"];
-	$cariform = mysql_query("SELECT DISTINCT FormID FROM marks WHERE studentID='$studentID'");
-	$cariform2 = mysql_query("SELECT DISTINCT FormID FROM marks WHERE studentID='$studentID'");
+
+	//After this have to put WHERE studentID so that we can specify specific student
+
+    $studentID = $_GET["studentID"];
+	$cariform = $pdo->query("SELECT DISTINCT FormID FROM marks WHERE studentID='$studentID'");
+	$cariform2 = $pdo->query("SELECT DISTINCT FormID FROM marks WHERE studentID='$studentID'");
 
 
 	?>

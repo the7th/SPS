@@ -47,10 +47,6 @@ Future Plan:
 
 1. In Form 4 and Form 5, they will be divided according to their respective stream. In Form 4 and Form 5, they can add or minus the elective subjects.
 
-TO DO:
-- Change all query statement to PDO statements.
-- Security: never save passwords in plain text
-
 
 I need to break things down into its respective place so that I can put them in a proper place. 
 
@@ -98,3 +94,8 @@ Password: teacher
 Parent:
 Username: parent
 Password: parent
+
+TO DO:
+- Change all query statement to PDO statements.
+- Security: never save passwords in plain text
+- Remove Metronic. Need to use something else.

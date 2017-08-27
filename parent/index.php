@@ -83,13 +83,13 @@ if ($redirect != "yes"){
     <th>List of Child</th>
     </thead>
 <?php
-$findChildren = mysql_query("SELECT * FROM parentforstudent WHERE username='$parentUsername'") or die(mysql_error());
+$findChildren = $pdo->query("SELECT * FROM parentforstudent WHERE username='$parentUsername'") or die(mysql_error());
 while($displayChildren = mysql_fetch_array($findChildren)){
     ?>
     <tr>
         <td><?php $childrenId = $displayChildren['studentID'];
-        $findChildrenName = mysql_query("SELECT * FROM student WHERE StudentID='$childrenId'");
-        $childrenName = mysql_fetch_array($findChildrenName); ?><a href="children-score.php?StudentID=<?php echo $childrenName['StudentID']; ?>"><?php echo $childrenName['StudentName']?></a></td>
+        $findChildrenName = $pdo->query("SELECT * FROM student WHERE StudentID='$childrenId'");
+        $childrenName = $findChildrenName->fetch(); ?><a href="children-score.php?StudentID=<?php echo $childrenName['StudentID']; ?>"><?php echo $childrenName['StudentName']?></a></td>
     </tr>
 <?php } ?>
 </table>
