@@ -1,14 +1,15 @@
 <?php
 session_start();
-if(isset($_SESSION['username']));
-else
-header("location:../login.php");
-include("../connect.php");
+if (isset($_SESSION['username']));
+else {
+    header('location:../login.php');
+}
+include '../connect.php';
 $headmaster = $_SESSION['username'];
 $findUsername = $pdo->query("SELECT * FROM users WHERE username='$headmaster'");
 $username = $findUsername->fetch();
-$studentID = $_GET["studentID"];
-$FormID = $_GET["FormID"];
+$studentID = $_GET['studentID'];
+$FormID = $_GET['FormID'];
 
 $findStudentDetail = $pdo->query("SELECT * FROM marks WHERE studentID='$studentID' AND FormID='$FormID'");
 $findStudentName = $pdo->query("SELECT * FROM student WHERE studentID='$studentID'");
@@ -77,14 +78,16 @@ function goBack()
                     <th>Komen</th>
                 </tr>
                 <?php
-                    while($studentDetail = $findStudentDetail->fetch()) { ?>
+                    while ($studentDetail = $findStudentDetail->fetch()) {
+                        ?>
                 <tr>
                     <td><?php echo $studentDetail['subjekID']; ?></td>
                     <td><?php echo $studentDetail['Score']; ?></td>
                     <td><?php echo $studentDetail['Grade']; ?></td>
                     <td><?php echo $studentDetail['teacherComment']; ?></td>
                 </tr>
-                <?php	}
+                <?php
+                    }
                 ?>
                 </tbody></table>
             <input class="btn form-control btn-default" type="button" value="Back" onclick="goBack()">

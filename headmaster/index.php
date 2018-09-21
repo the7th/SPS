@@ -1,14 +1,15 @@
 <?php
 session_start();
-if(isset($_SESSION['username']));
-else
-    header("location:../login.php");
-include("../connect.php");
+if (isset($_SESSION['username']));
+else {
+    header('location:../login.php');
+}
+include '../connect.php';
 $headmaster = $_SESSION['username'];
 $findUsername = $pdo->query("SELECT * FROM users WHERE username='$headmaster'");
 $username = $findUsername->fetch();
 
-$findClassList = $pdo->query("SELECT * FROM form ORDER BY ClassName ASC");
+$findClassList = $pdo->query('SELECT * FROM form ORDER BY ClassName ASC');
 ?>
 <!doctype html>
 <html>
@@ -31,8 +32,7 @@ $findClassList = $pdo->query("SELECT * FROM form ORDER BY ClassName ASC");
 <body>
 
 <?php
-include('../nav.php')
-?>
+include '../nav.php'?>
 
 <div class="container-fluid">
     <div class="row">
@@ -40,9 +40,11 @@ include('../nav.php')
         <div class="col-sm-10 col-md-10">
             <p>Below is a list of class available in SMK Danau Kota</p>
             <ul>
-                <?php while($classList = mysql_fetch_array($findClassList)){ ?>
-                    <li><a href="kelas.php?FormID=<?php echo $classList['FormID']; ?>"><?php echo $classList['ClassName'];?></a></li>
-                <?php } ?>
+                <?php while ($classList = mysql_fetch_array($findClassList)) {
+    ?>
+                    <li><a href="kelas.php?FormID=<?php echo $classList['FormID']; ?>"><?php echo $classList['ClassName']; ?></a></li>
+                <?php
+} ?>
             </ul>
         </div>
     </div>

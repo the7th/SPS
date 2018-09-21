@@ -1,6 +1,6 @@
 <?php
-include("../session.php");
-include("../connect.php");
+include '../session.php';
+include '../connect.php';
 $username = $_SESSION['username'];
 
 $carinamauser = $pdo->query("SELECT full_name FROM users WHERE username='$username'");
@@ -36,7 +36,7 @@ $namauser = $carinamauser->fetch(); // need to change to PDO
 
 
     <div class="container">
-        <?php include("../nav/nav.php");?>
+        <?php include '../nav/nav.php'; ?>
       <div class="row">
         <?php include '../nav/nav-sidebar.php' ?>
       <div class="col-md-10">
@@ -57,14 +57,15 @@ $namauser = $carinamauser->fetch(); // need to change to PDO
   <th>Class Info</th>
 </tr>
 <?php
-$findClass = $pdo->query("SELECT FormID, ClassName FROM form ORDER BY className") or die(mysql_error());
-while($displayClass = $findClass->fetch()){
-	?>
+$findClass = $pdo->query('SELECT FormID, ClassName FROM form ORDER BY className') or die(mysql_error());
+while ($displayClass = $findClass->fetch()) {
+    ?>
 	<tr>
 		<td><a href="masuk-markah.php?formID=<?php echo $displayClass['FormID']; ?>"><?php echo $displayClass['ClassName']?></a></td>
     <td><a href="#">Click here</a></td>
 	</tr>
-<?php } ?>
+<?php
+} ?>
 </table>
 
   </div>

@@ -26,22 +26,22 @@
 
   <body>
 
-<?php include("../nav/nav.php"); ?>
+<?php include '../nav/nav.php'; ?>
 
 <div class="container">
 <?php
-include("../connect.php"); 
-$studentID = intval($_POST["studentID"]);
-$StudentName = $_POST["studentName"];
-$SubjectID = $_POST["SubjectID"];
-$FormName = $_POST["FormID"];
-$Score = $_POST["Score"];
-$teacherComment = $_POST["teacherComment"];
+include '../connect.php';
+$studentID = intval($_POST['studentID']);
+$StudentName = $_POST['studentName'];
+$SubjectID = $_POST['SubjectID'];
+$FormName = $_POST['FormID'];
+$Score = $_POST['Score'];
+$teacherComment = $_POST['teacherComment'];
 $searchFormID = mysql_query("SELECT * FROM form WHERE ClassName='$FormName'");
 $arrayFormID = mysql_fetch_array($searchFormID);
 $form = $arrayFormID['FormID'];
 mysql_query("INSERT INTO marks (studentID, subjekID, Score, FormID, teacherComment) VALUES('$studentID', '$SubjectID', '$Score', '$form', '$teacherComment' ) ")
-or die(mysql_error());  
+or die(mysql_error());
 ?>
 
 <div class="alert alert-success"><p><strong>Information inserted.</strong> Below is the data that have been inserted into the system.</p></div>

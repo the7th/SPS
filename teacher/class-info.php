@@ -9,4 +9,3 @@ Info yang ada:
 3. Who is in the class
 
 */
-?>

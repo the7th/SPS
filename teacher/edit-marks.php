@@ -70,15 +70,14 @@ tinymce.init({
       </div>
     </div><div class="container">
 <?php
-include("../connect.php"); 
-$studentID = intval($_GET["studentID"]);
-$SubjectID = $_GET["SubjectID"];
+include '../connect.php';
+$studentID = intval($_GET['studentID']);
+$SubjectID = $_GET['SubjectID'];
 $getstudentinfo = mysql_query("SELECT * FROM student WHERE studentID='$studentID'");
 $studentinfo = mysql_fetch_array($getstudentinfo) or die(mysql_error());
 $form = $studentinfo['FormID'];
 $getforminfo = mysql_query("SELECT * FROM form WHERE FormID='$form'");
 $forminfo = mysql_fetch_array($getforminfo) or die(mysql_error());
-
 
 $infomarkah = mysql_query("SELECT * FROM marks WHERE studentID='$studentID' AND subjekID='$SubjectID' AND FormID='$form'");
 $markah = mysql_fetch_array($infomarkah);
@@ -99,12 +98,12 @@ $markah = mysql_fetch_array($infomarkah);
     <select name="SubjectID" id="SubjectID">
     <?php
 
-	$query2 = "SELECT * FROM subjek";
+    $query2 = 'SELECT * FROM subjek';
 $result2 = mysql_query($query2) or die(mysql_error());
-while($row2 = mysql_fetch_array($result2)){
-      echo "<option value=" .$row2['subjekID'].">" . $row2['subjekName']. "</option>" ;
+while ($row2 = mysql_fetch_array($result2)) {
+    echo '<option value='.$row2['subjekID'].'>'.$row2['subjekName'].'</option>';
 }
-	?>
+    ?>
     </select>
 </div>
 </div>

@@ -1,7 +1,7 @@
 <?php
-include("../session.php");
-include("../connect.php");
-$formID = $_GET["formID"];
+include '../session.php';
+include '../connect.php';
+$formID = $_GET['formID'];
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +65,7 @@ $formID = $_GET["formID"];
         <!-- BEGIN PAGE TOP -->
         <div class="page-top">
 
-            <?php include('../nav/nav-metronic.php') ?>
+            <?php include '../nav/nav-metronic.php'?>
         </div>
         <!-- END PAGE TOP -->
     </div>
@@ -77,7 +77,7 @@ $formID = $_GET["formID"];
 <!-- END HEADER & CONTENT DIVIDER -->
 <!-- BEGIN CONTAINER -->
 <div class="page-container">
-    <?php include('../nav/nav-sidebar-metronic.php') ?>
+    <?php include '../nav/nav-sidebar-metronic.php'?>
     <!-- BEGIN CONTENT -->
     <div class="page-content-wrapper">
         <!-- BEGIN CONTENT BODY -->
@@ -104,12 +104,13 @@ $formID = $_GET["formID"];
                                     <th>Edit Marks</th>
                                 </tr>
                                 <?php $findAllStudents = mysql_query("SELECT StudentID, StudentName FROM student WHERE formID='$formID'");
-                                while($allStudents = mysql_fetch_array($findAllStudents)){
+                                while ($allStudents = mysql_fetch_array($findAllStudents)) {
                                     ?>
                                     <tr>
                                         <td><a href="score-student-insert.php?studentID=<?php echo $allStudents['StudentID']; ?>"><?php echo $allStudents['StudentName']?></a></td><td><a href="#">Edit Marks</a></td>
                                     </tr>
-                                <?php } ?>
+                                <?php
+                                } ?>
                             </table>
                         </div>
                     </div>

@@ -1,4 +1,4 @@
-<?php include("../session.php"); ?>
+<?php include '../session.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,14 +24,14 @@
 
   <body>
 
-<?php include("../nav/nav.php"); ?>
+<?php include '../nav/nav.php'; ?>
 
     <div class="container">
       <div class="row">
         <?php include '../nav/nav-sidebar.php' ?>
       <div class="col-md-10">
 <h2 align="center">Add New Student</h2>
-<?php include("../connect.php") ?>
+<?php include '../connect.php'?>
 <p>Here you can add new student</p>
 <p>To add new student, just fill in the form below and click Add New Student</p>
 <form role="form" id="form1" name="form1" method="post" action="process-new-student.php">
@@ -55,11 +55,11 @@
     <select name="FormID" id="FormID" class="form-control" >
     <?php
 
-$result = $pdo->query("SELECT FormID, ClassName FROM form") or die(mysql_error());
-while($row = $result->fetch()){
-      echo "<option value=" .$row['FormID'].">" . $row['ClassName']. "</option>" ;
+$result = $pdo->query('SELECT FormID, ClassName FROM form') or die(mysql_error());
+while ($row = $result->fetch()) {
+    echo '<option value='.$row['FormID'].'>'.$row['ClassName'].'</option>';
 }
-	?>
+    ?>
     </select>
   </div>
   <p>

@@ -1,13 +1,14 @@
 <?php
 session_start();
-if(isset($_SESSION['username']));
-else
-    header("location:../login.php");
-include("../connect.php");
+if (isset($_SESSION['username']));
+else {
+    header('location:../login.php');
+}
+include '../connect.php';
 $headmaster = $_SESSION['username'];
 $findUsername = mysql_query("SELECT * FROM users WHERE username='$headmaster'");
 $username = mysql_fetch_array($findUsername);
-$FormID = $_GET["FormID"];
+$FormID = $_GET['FormID'];
 $findStudent = mysql_query("SELECT StudentID, StudentName FROM student WHERE FormID='$FormID'");
 $findForm = mysql_query("SELECT * FROM form WHERE FormID='$FormID'");
 $formName = mysql_fetch_array($findForm);
@@ -74,7 +75,7 @@ $formName = mysql_fetch_array($findForm);
         <!-- BEGIN PAGE TOP -->
         <div class="page-top">
 
-            <?php include('../nav/nav-metronic.php') ?>
+            <?php include '../nav/nav-metronic.php'?>
         </div>
         <!-- END PAGE TOP -->
     </div>
@@ -86,7 +87,7 @@ $formName = mysql_fetch_array($findForm);
 <!-- END HEADER & CONTENT DIVIDER -->
 <!-- BEGIN CONTAINER -->
 <div class="page-container">
-    <?php include('../nav/nav-sidebar-metronic.php') ?>
+    <?php include '../nav/nav-sidebar-metronic.php'?>
     <!-- BEGIN CONTENT -->
     <div class="page-content-wrapper">
         <!-- BEGIN CONTENT BODY -->
@@ -120,9 +121,11 @@ $formName = mysql_fetch_array($findForm);
 
                             <p>Senarai nama pelajar untuk kelas: <strong><?php echo $formName['ClassName']; ?></strong></p>
                             <ol>
-                                <?php while($senaraipelajar = mysql_fetch_array($findStudent)){ ?>
-                                    <li><a href="pelajar.php?studentID=<?php echo $senaraipelajar['StudentID']; ?>&amp;FormID=<?php echo $FormID?>"><?php echo $senaraipelajar['StudentName'];?></a></li>
-                                <?php } ?>
+                                <?php while ($senaraipelajar = mysql_fetch_array($findStudent)) {
+    ?>
+                                    <li><a href="pelajar.php?studentID=<?php echo $senaraipelajar['StudentID']; ?>&amp;FormID=<?php echo $FormID?>"><?php echo $senaraipelajar['StudentName']; ?></a></li>
+                                <?php
+} ?>
                             </ol>
                             <input class="btn" type="button" value="Back" onclick="goBack()">
 

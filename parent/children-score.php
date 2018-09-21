@@ -1,10 +1,11 @@
 <?php
 session_start();
 error_reporting(E_ALL ^ E_DEPRECATED);
-if(isset($_SESSION['username']));
-else
-  header("location:../login.php");
-include("../connect.php");
+if (isset($_SESSION['username']));
+else {
+    header('location:../login.php');
+}
+include '../connect.php';
 $parentUsername = $_SESSION['username'];
 $findUsername = mysql_query("SELECT * FROM users WHERE username='$parentUsername'");
 $username = mysql_fetch_array($findUsername);
@@ -65,7 +66,7 @@ $username = mysql_fetch_array($findUsername);
         </div>
     </div>
       
-      <?php $studentID = $_GET["StudentID"];
+      <?php $studentID = $_GET['StudentID'];
       $findForm = mysql_query("SELECT FormID FROM student WHERE StudentID='$studentID' ");
       $findForm2 = mysql_fetch_array($findForm);
       $form = $findForm2['FormID'];
@@ -95,18 +96,20 @@ $username = mysql_fetch_array($findUsername);
           <td><strong>GRADE</strong></td>
           <td><strong>TEACHER'S COMMENTS</strong></td>
         </tr>
-        <?php while($row = mysql_fetch_array($marks)){?>
+        <?php while ($row = mysql_fetch_array($marks)) {
+          ?>
         <tr>
           <td>
             <?php $subject = $row['subjekID'];
-            $findSubject = mysql_query("SELECT * FROM subjek WHERE subjekID='$subject'");
-            $arraySubject = mysql_fetch_array($findSubject);
-            echo $arraySubject['subjekName']; ?></td>
+          $findSubject = mysql_query("SELECT * FROM subjek WHERE subjekID='$subject'");
+          $arraySubject = mysql_fetch_array($findSubject);
+          echo $arraySubject['subjekName']; ?></td>
             <td><?php echo $row['Score']; ?></td>
-            <td><?php echo $row['Grade'];?></td>
-            <td><?php echo $row['teacherComment'];?></td>
+            <td><?php echo $row['Grade']; ?></td>
+            <td><?php echo $row['teacherComment']; ?></td>
           </tr>
-          <?php } ?>
+          <?php
+      } ?>
         </table>
         <?php
         $seeDigitalSign = mysql_query("SELECT * FROM parentforstudent WHERE studentID='$studentID'");
@@ -114,12 +117,12 @@ $username = mysql_fetch_array($findUsername);
         $digitalSign2 = $digitalSign['digitallysigned'];
         ?>
         <?php
-        if ( $digitalSign2 == "signed" ) {
-          ?>
+        if ($digitalSign2 == 'signed') {
+            ?>
           <p><strong>NOTE:</strong> You have digitally signed this report. However, you can view previous examination report for reference.</p>
-          <?php }
-
-          else { ?>
+          <?php
+        } else {
+              ?>
 
           <form action="digital-sign-process.php" method="post" name="form2" target="_blank">
             <input name="studentID" type="hidden" id="studentID" value="<?php echo $studentID ?>" />
@@ -132,7 +135,8 @@ $username = mysql_fetch_array($findUsername);
             </p>
           </form>
 
-          <?php } ?>
+          <?php
+          } ?>
           <p align="center"><input type="button" value="Print this page" onclick="printpage()" class="btn btn-block btn-mini"></p>
           <p>To view previous exam scores, please select the class your child have entered before.</p>
           <div align="center">
@@ -144,22 +148,24 @@ $username = mysql_fetch_array($findUsername);
 
                 <label for="firstform"></label>
                 <select name="firstform" id="firstform">
-                  <?php while($row = mysql_fetch_array($findForm3)){
-                    $form1 = $row['FormID'];
-                    $formName = mysql_query("SELECT * FROM form WHERE FormID='$form1'");
-                    $arrayForm1 = mysql_fetch_array($formName);
-                    ?>
+                  <?php while ($row = mysql_fetch_array($findForm3)) {
+              $form1 = $row['FormID'];
+              $formName = mysql_query("SELECT * FROM form WHERE FormID='$form1'");
+              $arrayForm1 = mysql_fetch_array($formName); ?>
                     <option value="<?php echo $form1 ?>"><?php echo $arrayForm1['ClassName']; ?></option>
-                    <?php } ?>
+                    <?php
+          } ?>
                   </select>
 
                   <label for="secondform"></label>
                   <select name="secondform" id="secondform">
-                   <?php while($row2 = mysql_fetch_array($findForm4)){
-                    $form2 = $row2['FormID']; $formName2 = mysql_query("SELECT * FROM form WHERE FormID='$form2'"); $arrayForm2 = mysql_fetch_array($formName2);
-                    ?>
+                   <?php while ($row2 = mysql_fetch_array($findForm4)) {
+              $form2 = $row2['FormID'];
+              $formName2 = mysql_query("SELECT * FROM form WHERE FormID='$form2'");
+              $arrayForm2 = mysql_fetch_array($formName2); ?>
                     <option value="<?php echo $form2 ?>"><?php echo $arrayForm2['ClassName']; ?></option>
-                    <?php } ?>    </select><p>
+                    <?php
+          } ?>    </select><p>
                     <input type="submit" name="submit" id="submit" class="btn btn-primary btn-small" value="Check result"></p>
                   </p>
                 </form>
