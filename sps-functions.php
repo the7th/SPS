@@ -2,14 +2,17 @@
 
 // this is a place where I put all the functions for SPS
 
-class SPS {
+class SPS
+{
+    public function db()
+    {
+        $db = new PDO('mysql:host=localhost;dbname=sa2;charset=utf8mb4', 'root', 'root');
 
-    public function db(){
-        $db = new PDO('mysql:host=localhost;dbname=sa2;charset=utf8mb4','root','root');
         return $db;
     }
 
-    public function getNumOfStudents(){
+    public function getNumOfStudents()
+    {
         $db = $this->db();
 
         $stmt = $db->query('SELECT COUNT(StudentID) as numOfStudents FROM student');
@@ -18,7 +21,8 @@ class SPS {
         return $result['numOfStudents'];
     }
 
-    public function getNumOfTeachers(){
+    public function getNumOfTeachers()
+    {
         $db = $this->db();
 
         $role = 'teacher';
@@ -30,33 +34,31 @@ class SPS {
         return $result['numOfTeachers'];
     }
 
-    public function getHighestGrade(){
-
+    public function getHighestGrade()
+    {
     }
 
-    public function getAvgGrade(){
-
+    public function getAvgGrade()
+    {
     }
 
-    public function getLowestGrade(){
-
+    public function getLowestGrade()
+    {
     }
 
-    public function getAllStudents(){
-
+    public function getAllStudents()
+    {
     }
 
-    public function getSpecificStudents(){
-
+    public function getSpecificStudents()
+    {
     }
 
-    public function getAllClass(){
-        
+    public function getAllClass()
+    {
     }
 
-    public function getSpecificClass(){
-
+    public function getSpecificClass()
+    {
     }
-
-
 }

@@ -1,4 +1,4 @@
-<?php include("../session.php"); ?>
+<?php include '../session.php'; ?>
 
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -97,7 +97,7 @@
         <!-- BEGIN PAGE TOP -->
         <div class="page-top">
 
-            <?php include('../nav/nav-metronic.php') ?>
+            <?php include '../nav/nav-metronic.php'?>
         </div>
         <!-- END PAGE TOP -->
     </div>
@@ -109,7 +109,7 @@
 <!-- END HEADER & CONTENT DIVIDER -->
 <!-- BEGIN CONTAINER -->
 <div class="page-container">
-    <?php include('../nav/nav-sidebar-metronic.php') ?>
+    <?php include '../nav/nav-sidebar-metronic.php'?>
     <!-- BEGIN CONTENT -->
     <div class="page-content-wrapper">
         <!-- BEGIN CONTENT BODY -->
@@ -131,8 +131,8 @@
                         </div>
                         <div class="portlet-body">
                             <?php
-                            include("../connect.php");
-                            $studentID = intval($_GET["studentID"]);
+                            include '../connect.php';
+                            $studentID = intval($_GET['studentID']);
                             // di sini data daripada satu table ke table lain
                             $getStudentInfo = mysql_query("SELECT StudentID,StudentName,FormID FROM student WHERE studentID='$studentID'");
                             $studentInfo = mysql_fetch_array($getStudentInfo) or die(mysql_error());
@@ -157,10 +157,10 @@
                                         <select name="SubjectID" id="SubjectID">
                                             <?php
 
-                                            $query2 = "SELECT subjekID,subjekName FROM subjek";
+                                            $query2 = 'SELECT subjekID,subjekName FROM subjek';
                                             $result2 = mysql_query($query2) or die(mysql_error());
-                                            while($row2 = mysql_fetch_array($result2)){
-                                                echo "<option value=" .$row2['subjekID'].">" . $row2['subjekName']. "</option>" ;
+                                            while ($row2 = mysql_fetch_array($result2)) {
+                                                echo '<option value='.$row2['subjekID'].'>'.$row2['subjekName'].'</option>';
                                             }
                                             ?>
                                         </select>

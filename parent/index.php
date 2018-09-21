@@ -1,17 +1,18 @@
 <?php
 session_start();
-if(isset($_SESSION['username']));
-else
-    header("location:../index.php");
-include("../connect.php");
+if (isset($_SESSION['username']));
+else {
+    header('location:../index.php');
+}
+include '../connect.php';
 $parentUsername = $_SESSION['username'];
 $findUsername = $pdo->query("SELECT full_name FROM users WHERE username='$parentUsername'");
 $username = $findUsername->fetch();
 $enable_access = $pdo->query("SELECT enable_access FROM sitesettings WHERE sitesettings_id='1'");
 $query_enable_access = $enable_access->fetch();
 $redirect = $query_enable_access['enable_access'];
-if ($redirect != "yes"){
-	header("location:../not-opened.php");
+if ($redirect != 'yes') {
+    header('location:../not-opened.php');
 }
 ?>
 <!DOCTYPE html>
@@ -84,14 +85,15 @@ if ($redirect != "yes"){
     </thead>
 <?php
 $findChildren = $pdo->query("SELECT * FROM parentforstudent WHERE username='$parentUsername'") or die(mysql_error());
-while($displayChildren = mysql_fetch_array($findChildren)){
+while ($displayChildren = mysql_fetch_array($findChildren)) {
     ?>
     <tr>
         <td><?php $childrenId = $displayChildren['studentID'];
-        $findChildrenName = $pdo->query("SELECT * FROM student WHERE StudentID='$childrenId'");
-        $childrenName = $findChildrenName->fetch(); ?><a href="children-score.php?StudentID=<?php echo $childrenName['StudentID']; ?>"><?php echo $childrenName['StudentName']?></a></td>
+    $findChildrenName = $pdo->query("SELECT * FROM student WHERE StudentID='$childrenId'");
+    $childrenName = $findChildrenName->fetch(); ?><a href="children-score.php?StudentID=<?php echo $childrenName['StudentID']; ?>"><?php echo $childrenName['StudentName']?></a></td>
     </tr>
-<?php } ?>
+<?php
+} ?>
 </table>
 </div> <!-- /container -->
 

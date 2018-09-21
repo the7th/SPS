@@ -1,14 +1,15 @@
 <?php 
 session_start();
-if(isset($_SESSION['username']));
-else 
-header("location:../login.php");
-include("../connect.php");
+if (isset($_SESSION['username']));
+else {
+    header('location:../login.php');
+}
+include '../connect.php';
 $headmaster = $_SESSION['username'];
 $findUsername = $pdo->query("SELECT * FROM users WHERE username='$headmaster'");
 $username = $findUsername->fetch();
 
-$findClassList = $pdo->query("SELECT * FROM form ORDER BY ClassName ASC");
+$findClassList = $pdo->query('SELECT * FROM form ORDER BY ClassName ASC');
 ?>
 <!doctype html>
 <html>
@@ -30,18 +31,18 @@ $findClassList = $pdo->query("SELECT * FROM form ORDER BY ClassName ASC");
 
 <body>
 
-<?php include('../nav/nav.php') ?>
+<?php include '../nav/nav.php'?>
 
         <div class="container-fluid">
         <div class="row-fluid">
 
-            <?php include('../nav/nav-sidebar.php') ?>
+            <?php include '../nav/nav-sidebar.php'?>
             <div class="col-sm-10 col-md-10">
       <p>Average for school student for this current examination result is:</p>
 <?php
-$avg = $pdo->query("SELECT AVG(Score) FROM marks");
+$avg = $pdo->query('SELECT AVG(Score) FROM marks');
 $avgResult = $avg->fetch(); ?>
-<h1 align="center"><?php echo $avgResult['AVG(Score)'];?>%</h1>
+<h1 align="center"><?php echo $avgResult['AVG(Score)']; ?>%</h1>
 <p>Number of students who got each grade.</p>
 <table class="table table-condensed table-bordered">
 <tr>
@@ -49,8 +50,9 @@ $avgResult = $avg->fetch(); ?>
 <th>Number of students</th>
 </tr>
 <?php
-$avgGrade = $pdo->query("SELECT Grade, COUNT(Grade) FROM marks GROUP BY Grade");
-while ($avgGradeResult = $avgGrade->fetch()){ ?>
+$avgGrade = $pdo->query('SELECT Grade, COUNT(Grade) FROM marks GROUP BY Grade');
+while ($avgGradeResult = $avgGrade->fetch()) {
+    ?>
 <tr>
 <td><?php
 echo $avgGradeResult['Grade']?></td><td><?php echo $avgGradeResult['COUNT(Grade)']; ?></td>

@@ -1,15 +1,16 @@
 <?php
 session_start();
-if(isset($_SESSION['username']));
-else
-  header("location:../login.php");
-include("../connect.php");
+if (isset($_SESSION['username']));
+else {
+    header('location:../login.php');
+}
+include '../connect.php';
 $username = $_SESSION['username'];
-if (isset($_POST["enable_access"])):
-    $enable_access = $_POST["enable_access"];
+if (isset($_POST['enable_access'])):
+    $enable_access = $_POST['enable_access'];
 endif;
-if (!isset($_POST["enable_access"])):
-    $enable_access = "no";
+if (!isset($_POST['enable_access'])):
+    $enable_access = 'no';
 endif;
 
 $pdo->query("UPDATE sitesettings SET enable_access='$enable_access' WHERE sitesettings_id='1'") or die(mysql_error());
@@ -62,11 +63,11 @@ $pdo->query("UPDATE sitesettings SET enable_access='$enable_access' WHERE sitese
 
         </div>
         <div class="col-sm-10 col-md-10">
-            <?php if ($enable_access == "no"){
-                echo "<h1>Report Access is NOT enabled</h1>";
-            } else {
-                echo "<h1>Report Access have been enabled</h1>";
-            } ?>
+            <?php if ($enable_access == 'no') {
+    echo '<h1>Report Access is NOT enabled</h1>';
+} else {
+    echo '<h1>Report Access have been enabled</h1>';
+} ?>
 
         </div></div></div> <!-- /container -->
 

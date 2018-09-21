@@ -1,7 +1,7 @@
 <?php
-include("../session.php");
-include("../connect.php");
-$formID = $_GET["formID"]; // dapatkan markah budak
+include '../session.php';
+include '../connect.php';
+$formID = $_GET['formID']; // dapatkan markah budak
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,11 +31,11 @@ $formID = $_GET["formID"]; // dapatkan markah budak
 
 <body>
 
-<?php include("../nav/nav.php"); ?>
+<?php include '../nav/nav.php'; ?>
 
     <div class="container">
       <div class="row">
-          <?php include('../nav/nav-sidebar.php'); ?>
+          <?php include '../nav/nav-sidebar.php'; ?>
       <div class="col-md-10">
       <h1>Please choose a student</h1>
       <p>Whichever you want to.</p>
@@ -45,12 +45,13 @@ $formID = $_GET["formID"]; // dapatkan markah budak
         <th>Edit Marks</th>
       </tr>
       <?php $findAllStudents = mysql_query("SELECT StudentID, StudentName FROM student WHERE formID='$formID'");
-	  while($allStudents = mysql_fetch_array($findAllStudents)){
-	  ?>
+      while ($allStudents = mysql_fetch_array($findAllStudents)) {
+          ?>
       	<tr>
         	<td><a href="masuk-markah-student.php?studentID=<?php echo $allStudents['StudentID']; ?>"><?php echo $allStudents['StudentName']?></a></td><td><a href="#">Edit Marks</a></td>
         </tr>
-        <?php } ?>
+        <?php
+      } ?>
       </table>
 </div>
 </div>

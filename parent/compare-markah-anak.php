@@ -50,18 +50,17 @@
           </div>
       </div>
   </div>
-    <?php include("../connect.php");
-$studentID = $_POST["studentID"];
+    <?php include '../connect.php';
+$studentID = $_POST['studentID'];
 $findForm = mysql_query("SELECT * FROM student WHERE studentID='$studentID' ");
 $findForm2 = mysql_fetch_array($findForm);
 $form = $findForm2['FormID'];
-$firstForm = $_POST["firstform"];
-$secondForm = $_POST["secondform"];
+$firstForm = $_POST['firstform'];
+$secondForm = $_POST['secondform'];
 $mark = mysql_query("SELECT * FROM marks WHERE studentID='$studentID' AND FormID='$firstForm'");
 $mark2 = mysql_query("SELECT * FROM marks WHERE studentID='$studentID' AND FormID='$secondForm'");
 
-	//lepas ni kena letak WHERE studentID supaya boleh specify mana student
-
+    //lepas ni kena letak WHERE studentID supaya boleh specify mana student
 
 ?>
 <div class="container">
@@ -78,17 +77,25 @@ $mark2 = mysql_query("SELECT * FROM marks WHERE studentID='$studentID' AND FormI
     <td><strong>TEACHER'S COMMENTS</strong></td>
 
   </tr>
-  <?php while($row2 = mysql_fetch_array($mark2)){?>
+  <?php while ($row2 = mysql_fetch_array($mark2)) {
+    ?>
   <tr>
-    <td><?php $subjek = $row2['subjekID']; $carisubjek = mysql_query("SELECT * FROM subjek WHERE subjekID='$subjek'"); $arraysubjek = mysql_fetch_array($carisubjek); echo $arraysubjek['subjekName']; ?></td>
+    <td><?php $subjek = $row2['subjekID'];
+    $carisubjek = mysql_query("SELECT * FROM subjek WHERE subjekID='$subjek'");
+    $arraysubjek = mysql_fetch_array($carisubjek);
+    echo $arraysubjek['subjekName']; ?></td>
     <td><?php echo $row2['Score']; ?></td>
-    <td><?php $kelas = $row2['FormID']; $carikelas = mysql_query("SELECT * FROM form WHERE FormID='$kelas'"); $arraykelas = mysql_fetch_array($carikelas); echo $arraykelas['ClassName'];?></td>
-    <td><?php echo $row2['Grade'];?></td>
-    <td><?php echo $row2['teacherComment'];?></td>
+    <td><?php $kelas = $row2['FormID'];
+    $carikelas = mysql_query("SELECT * FROM form WHERE FormID='$kelas'");
+    $arraykelas = mysql_fetch_array($carikelas);
+    echo $arraykelas['ClassName']; ?></td>
+    <td><?php echo $row2['Grade']; ?></td>
+    <td><?php echo $row2['teacherComment']; ?></td>
 
   </tr>
 
-  <?php } ?>
+  <?php
+} ?>
 </table>
 
     	<table class="table table-hover" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -100,17 +107,25 @@ $mark2 = mysql_query("SELECT * FROM marks WHERE studentID='$studentID' AND FormI
     <td><strong>TEACHER'S COMMENTS</strong></td>
 
   </tr>
-  <?php while($row = mysql_fetch_array($mark)){?>
+  <?php while ($row = mysql_fetch_array($mark)) {
+        ?>
   <tr>
-    <td><?php $subjek = $row['subjekID']; $carisubjek = mysql_query("SELECT * FROM subjek WHERE subjekID='$subjek'"); $arraysubjek = mysql_fetch_array($carisubjek); echo $arraysubjek['subjekName']; ?></td>
+    <td><?php $subjek = $row['subjekID'];
+        $carisubjek = mysql_query("SELECT * FROM subjek WHERE subjekID='$subjek'");
+        $arraysubjek = mysql_fetch_array($carisubjek);
+        echo $arraysubjek['subjekName']; ?></td>
     <td><?php echo $row['Score']; ?></td>
-    <td><?php $kelas = $row['FormID']; $carikelas = mysql_query("SELECT * FROM form WHERE FormID='$kelas'"); $arraykelas = mysql_fetch_array($carikelas); echo $arraykelas['ClassName'];?></td>
-    <td><?php echo $row['Grade'];?></td>
-    <td><?php echo $row['teacherComment'];?></td>
+    <td><?php $kelas = $row['FormID'];
+        $carikelas = mysql_query("SELECT * FROM form WHERE FormID='$kelas'");
+        $arraykelas = mysql_fetch_array($carikelas);
+        echo $arraykelas['ClassName']; ?></td>
+    <td><?php echo $row['Grade']; ?></td>
+    <td><?php echo $row['teacherComment']; ?></td>
 
   </tr>
 
-  <?php } ?>
+  <?php
+    } ?>
 </table>
 
 </div>

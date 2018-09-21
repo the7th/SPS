@@ -6,16 +6,15 @@
     <!-- Bootstrap -->
     <link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
 
-    <?php include("../connect.php");
+    <?php include '../connect.php';
 
-	//After this have to put WHERE studentID so that we can specify specific student
+    //After this have to put WHERE studentID so that we can specify specific student
 
-    $studentID = $_GET["studentID"];
-	$cariform = $pdo->query("SELECT DISTINCT FormID FROM marks WHERE studentID='$studentID'");
-	$cariform2 = $pdo->query("SELECT DISTINCT FormID FROM marks WHERE studentID='$studentID'");
+    $studentID = $_GET['studentID'];
+    $cariform = $pdo->query("SELECT DISTINCT FormID FROM marks WHERE studentID='$studentID'");
+    $cariform2 = $pdo->query("SELECT DISTINCT FormID FROM marks WHERE studentID='$studentID'");
 
-
-	?>
+    ?>
     
   </head>
   <body>
@@ -31,20 +30,24 @@
 
       <label for="firstform"></label>
       <select name="firstform" id="firstform">
-      <?php while($row = mysql_fetch_array($cariform)){ 
-	  	  $form1 = $row['FormID']; $namaform = mysql_query("SELECT * FROM form WHERE FormID='$form1'"); $arrayform1 = mysql_fetch_array($namaform); 
-?>
+      <?php while ($row = mysql_fetch_array($cariform)) {
+        $form1 = $row['FormID'];
+        $namaform = mysql_query("SELECT * FROM form WHERE FormID='$form1'");
+        $arrayform1 = mysql_fetch_array($namaform); ?>
         <option value="<?php echo $form1 ?>"><?php echo $arrayform1['ClassName']; ?></option>
-        <?php } ?>
+        <?php
+    } ?>
       </select>
 
     <label for="form2"></label>
     <select name="form2" id="form2">
- <?php while($row2 = mysql_fetch_array($cariform2)){ 
-	  	  $form2 = $row2['FormID']; $namaform2 = mysql_query("SELECT * FROM form WHERE FormID='$form2'"); $arrayform2 = mysql_fetch_array($namaform2); 
-?>
+ <?php while ($row2 = mysql_fetch_array($cariform2)) {
+        $form2 = $row2['FormID'];
+        $namaform2 = mysql_query("SELECT * FROM form WHERE FormID='$form2'");
+        $arrayform2 = mysql_fetch_array($namaform2); ?>
         <option><?php echo $arrayform2['ClassName']; ?></option>
-        <?php } ?>    </select>
+        <?php
+    } ?>    </select>
     <input type="submit" name="submit" id="submit" class="btn btn-primary btn-large" value="Check result">
     </p>
   </form>

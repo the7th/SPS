@@ -1,5 +1,6 @@
 <div class="col-sm-2 col-md-2">
-    <?php if ($_SESSION['role'] == 'headmaster'){ ?>
+    <?php if ($_SESSION['role'] == 'headmaster') {
+    ?>
 
     <ul class="nav nav-tabs nav-stacked">
         <li>
@@ -9,7 +10,8 @@
         <li><a href="enable-report.php">Enable Report Access</a></li>
     </ul>
 
-    <?php }
+    <?php
+}
 
     if ($_SESSION['role'] == 'teacher') {
         ?>
@@ -19,7 +21,8 @@
             </li>
             <li><a href="add-new-student.php">Add New Student</a></li>
         </ul>
-    <?php }
+    <?php
+    }
     ?>
 
 </div>

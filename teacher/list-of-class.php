@@ -1,6 +1,6 @@
 <?php
-include("../session.php");
-include("../connect.php");
+include '../session.php';
+include '../connect.php';
 $username = $_SESSION['username'];
 
 $carinamauser = mysql_query("SELECT full_name FROM users WHERE username='$username'");
@@ -67,7 +67,7 @@ $namauser = mysql_fetch_array($carinamauser); // need to change to PDO
         <!-- BEGIN PAGE TOP -->
         <div class="page-top">
 
-            <?php include('../nav/nav-metronic.php') ?>
+            <?php include '../nav/nav-metronic.php'?>
         </div>
         <!-- END PAGE TOP -->
     </div>
@@ -79,7 +79,7 @@ $namauser = mysql_fetch_array($carinamauser); // need to change to PDO
 <!-- END HEADER & CONTENT DIVIDER -->
 <!-- BEGIN CONTAINER -->
 <div class="page-container">
-    <?php include('../nav/nav-sidebar-metronic.php') ?>
+    <?php include '../nav/nav-sidebar-metronic.php'?>
     <!-- BEGIN CONTENT -->
     <div class="page-content-wrapper">
         <!-- BEGIN CONTENT BODY -->
@@ -101,14 +101,15 @@ $namauser = mysql_fetch_array($carinamauser); // need to change to PDO
                                     <th>Class Info</th>
                                 </tr>
                                 <?php
-                                $findClass = mysql_query("SELECT FormID, ClassName FROM form ORDER BY className") or die(mysql_error());
-                                while($displayClass = mysql_fetch_array($findClass)){
+                                $findClass = mysql_query('SELECT FormID, ClassName FROM form ORDER BY className') or die(mysql_error());
+                                while ($displayClass = mysql_fetch_array($findClass)) {
                                     ?>
                                     <tr>
                                         <td><a href="score-student.php?formID=<?php echo $displayClass['FormID']; ?>"><?php echo $displayClass['ClassName']?></a></td>
                                         <td><a href="#">Click here</a></td>
                                     </tr>
-                                <?php } ?>
+                                <?php
+                                } ?>
                             </table>
                         </div>
                     </div>

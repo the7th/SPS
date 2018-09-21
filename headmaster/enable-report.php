@@ -1,9 +1,10 @@
 <?php
 session_start();
-if(isset($_SESSION['username']));
-else
-    header("location:../login.php");
-include("../connect.php");
+if (isset($_SESSION['username']));
+else {
+    header('location:../login.php');
+}
+include '../connect.php';
 $username = $_SESSION['username'];
 ?>
 
@@ -26,10 +27,10 @@ $username = $_SESSION['username'];
 </head>
 
 <body>
-<?php include('../nav/nav.php') ?>
+<?php include '../nav/nav.php'?>
 <div class="container-fluid">
     <div class="row-fluid">
-        <?php include('../nav/nav-sidebar.php') ?>
+        <?php include '../nav/nav-sidebar.php'?>
         <div class="col-sm-10 col-md-10">
             <div class="alert">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>

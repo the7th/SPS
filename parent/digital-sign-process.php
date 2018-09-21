@@ -1,15 +1,16 @@
 <?php
 session_start();
 error_reporting(E_ALL ^ E_DEPRECATED);
-if(isset($_SESSION['username']));
-else
-header("location:../login.php");
-include("../connect.php");
+if (isset($_SESSION['username']));
+else {
+    header('location:../login.php');
+}
+include '../connect.php';
 $parentUsername = $_SESSION['username'];
 $findUsername = mysql_query("SELECT full_name FROM users WHERE username='$parentUsername'");
 $username = mysql_fetch_array($findUsername);
-$digitallySigned = $_POST["digitallysigned2"];
-$studentID = $_POST["studentID"];
+$digitallySigned = $_POST['digitallysigned2'];
+$studentID = $_POST['studentID'];
 mysql_query("UPDATE parentforstudent SET digitallysigned='$digitallySigned' WHERE studentID='$studentID'") or die(mysql_error());
 ?>
 <!DOCTYPE html>
@@ -64,7 +65,7 @@ mysql_query("UPDATE parentforstudent SET digitallysigned='$digitallySigned' WHER
   </div>
 
 <div class="container">
-<h1>Digital sign complete, <?php echo $username['full_name'];?>.</h1>
+<h1>Digital sign complete, <?php echo $username['full_name']; ?>.</h1>
 	  <p>You have digitally signed the document and this will be the proof that you have read your child's examination report.</p>
 
 </div>
